@@ -1,0 +1,6 @@
+bin/
+obj/
+*.json
+!regions.json
+bin/
+obj/
