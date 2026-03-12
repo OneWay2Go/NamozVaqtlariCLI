@@ -139,8 +139,6 @@ class Program
         {
             try
             {
-                var bf = new BrowserFetcher();
-                await bf.DownloadAsync();
                 await using var b = await Puppeteer.LaunchAsync(new LaunchOptions 
                 { 
                     Headless = true,
