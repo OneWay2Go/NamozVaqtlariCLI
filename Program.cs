@@ -142,6 +142,7 @@ class Program
                 await using var b = await Puppeteer.LaunchAsync(new LaunchOptions 
                 { 
                     Headless = true,
+                    ExecutablePath = "/usr/bin/chromium",
                     // Linux uchun muhim argumentlar:
                     Args = new[] 
                     { 
