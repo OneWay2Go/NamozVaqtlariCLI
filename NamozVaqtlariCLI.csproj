@@ -8,6 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Update="regions.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
       <PackageReference Include="PuppeteerSharp" Version="24.39.0" />
       <PackageReference Include="Spectre.Console" Version="0.54.0" />
     </ItemGroup>
