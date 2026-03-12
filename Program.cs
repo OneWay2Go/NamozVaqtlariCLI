@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -35,12 +34,21 @@ public class AppConfig
 
 class Program
 {
-    private static string BasePath => AppContext.BaseDirectory;
-    private static string ConfigFile => Path.Combine(BasePath, "namoz-config.json");
-    private static string RegionsFile => Path.Combine(BasePath, "regions.json");
+    static string configPath = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 
+        "namoz-vaqtlari"
+    );
+    
+    private static string ConfigFile = Path.Combine(configPath, "namoz-config.json");
+    private static string RegionsFile => Path.Combine(AppContext.BaseDirectory, "regions.json");
 
     static async Task Main(string[] args)
     {
+        if (!Directory.Exists(configPath))
+        {
+            Directory.CreateDirectory(configPath);
+        }
+        
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
         // Initial Config
