@@ -139,10 +139,13 @@ class Program
         {
             try
             {
+                var browserFetcher = new BrowserFetcher();
+                // This downloads the correct browser for whatever OS you are on (Windows/Linux/macOS)
+                var revisionInfo = await browserFetcher.DownloadAsync();
                 await using var b = await Puppeteer.LaunchAsync(new LaunchOptions 
                 { 
                     Headless = true,
-                    ExecutablePath = "/usr/bin/chromium",
+                    ExecutablePath = revisionInfo.GetExecutablePath(),
                     // Linux uchun muhim argumentlar:
                     Args = new[] 
                     { 
